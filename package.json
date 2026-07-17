@@ -8,6 +8,7 @@
     "gen:api": "bunx --bun apicraft"
   },
   "dependencies": {
+    "@base-ui/react": "^1.6.0",
     "@kanjou/react": "^0.0.20",
     "@siberiacancode/fetches": "^1.14.3",
     "@siberiacancode/reactuse": "^1.0.10",
