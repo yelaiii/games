@@ -13,6 +13,7 @@
     "allowImportingTsExtensions": true,
     "types": ["bun"],
     "paths": {
+      "#/api/*": ["./generated/api/*"],
       "#/*": ["./src/*"]
     }
   }

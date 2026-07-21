@@ -1,8 +1,11 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["oxc", "typescript", "unicorn", "import", "react"],
+  "jsPlugins": ["@unocss/eslint-plugin"],
   "categories": { "perf": "error", "correctness": "error" },
   "rules": {
+    "@unocss/order": ["error", { "unoFunctions": ["cva", "cn"], "unoVariables": ["className"] }],
+
     "eslint/no-useless-assignment": "error",
     "eslint/array-callback-return": "error",
     "eslint/max-classes-per-file": "error",

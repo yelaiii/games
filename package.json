@@ -1,8 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "bunx --bun vite",
+    "dev": "bunx --bun vite dev",
     "prod": "bun dist/server/index.mjs",
+    "fmt": "oxfmt",
+    "lint": "oxlint",
     "build": "bunx --bun vite build",
     "gen:routes": "tsr generate",
     "gen:api": "bunx --bun apicraft"
@@ -17,6 +19,7 @@
     "@tanstack/react-router-ssr-query": "^1.167.1",
     "@tanstack/react-start": "^1.168.28",
     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "tailwind-merge": "^3.6.0",
@@ -34,6 +37,7 @@
     "@types/bun": "^1.3.14",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@unocss/eslint-plugin": "^66.7.5",
     "@vitejs/plugin-react": "^6.0.3",
     "lefthook": "^2.1.10",
     "nitro": "3.0.260610-beta",

@@ -21,6 +21,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Games' },
     ],
+    links: [
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'icon', href: '/favicon.ico' },
+    ],
   }),
   loader: async () => {
     const locale = await getLocale()
@@ -38,7 +43,7 @@ function Root({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="font-sans bg-background antialiased">
         <I18nProvider locale={locale} messages={messages}>
           {children}
         </I18nProvider>
