@@ -8,7 +8,7 @@ import { createContext, useContext } from 'react'
 import type { InputProps } from '../input/input'
 
 import { Input } from '../input/input'
-import { rcn } from '../utils'
+import { bcn } from '../utils'
 
 type InputGroupContextValue = {
   size?: InputProps['size']
@@ -38,10 +38,10 @@ export function InputGroup({ className, size, ...props }: InputGroupProps) {
   return (
     <InputGroupContext.Provider value={{ size }}>
       <div
+        {...props}
         data-slot="input-group"
         role="group"
         className={cn(inputGroupVariants({ size }), className)}
-        {...props}
       />
     </InputGroupContext.Provider>
   )
@@ -76,6 +76,7 @@ export function InputGroupAddon({
 }: InputGroupAddonProps) {
   return (
     <div
+      {...props}
       role="group"
       data-slot="input-group-addon"
       data-align={align}
@@ -84,7 +85,6 @@ export function InputGroupAddon({
         if ((e.target as HTMLElement).closest('button')) return
         e.currentTarget.parentElement?.querySelector('input')?.focus()
       }}
-      {...props}
     />
   )
 }
@@ -96,16 +96,13 @@ export function InputGroupInput({ className, ...props }: InputProps) {
 
   return (
     <Input
+      {...props}
       data-slot="input-group-control"
       size={size}
-      className={(state) =>
-        rcn(
-          state,
-          className,
-          'aria-invalid:ring-0 outline-none border-0 rounded-none bg-transparent flex-1 ring-0 shadow-none focus:outline-transparent focus:outline-none focus:border-transparent disabled:bg-transparent focus-visible:ring-0 data-[invalid=true]:focus:outline-transparent data-[invalid=true]:focus:outline-none data-[invalid=true]:border-transparent!',
-        )
-      }
-      {...props}
+      className={bcn(
+        'aria-invalid:ring-0 outline-none border-0 rounded-none bg-transparent flex-1 ring-0 shadow-none focus:outline-transparent focus:outline-none focus:border-transparent disabled:bg-transparent focus-visible:ring-0 data-[invalid=true]:focus:outline-transparent data-[invalid=true]:focus:outline-none data-[invalid=true]:border-transparent!',
+        className,
+      )}
     />
   )
 }

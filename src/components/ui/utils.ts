@@ -1,11 +1,9 @@
 import { cn } from '@siberiacancode/reactuse'
 
 type ClassValue = Parameters<typeof cn>[number]
+type ClassValueOrFn<State> = ClassValue | ((state: State) => ClassValue)
 
-export function rcn<State>(
-  state: State,
-  className: ClassValue | ((state: State) => ClassValue),
-  ...inputs: ClassValue[]
-) {
-  return cn(...inputs, typeof className === 'function' ? className(state) : className)
+export function bcn<State = any>(...inputs: ClassValueOrFn<State>[]) {
+  return (state: State) =>
+    cn(...inputs.map((input) => (typeof input === 'function' ? input(state) : input)))
 }

@@ -31,11 +31,11 @@ export function Drawer({
   return (
     <DrawerContext.Provider value={contextValue}>
       <DrawerPrimitive.Root
+        {...props}
         data-slot="drawer"
         modal={modal}
         snapPoints={snapPoints}
         swipeDirection={swipeDirection}
-        {...props}
       />
     </DrawerContext.Provider>
   )
@@ -44,19 +44,19 @@ export function Drawer({
 export type DrawerTriggerProps = DrawerPrimitive.Trigger.Props
 
 export function DrawerTrigger({ ...props }: DrawerTriggerProps) {
-  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
+  return <DrawerPrimitive.Trigger {...props} data-slot="drawer-trigger" />
 }
 
 export type DrawerPortalProps = DrawerPrimitive.Portal.Props
 
 export function DrawerPortal({ ...props }: DrawerPortalProps) {
-  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
+  return <DrawerPrimitive.Portal {...props} data-slot="drawer-portal" />
 }
 
 export type DrawerCloseProps = DrawerPrimitive.Close.Props
 
 export function DrawerClose({ ...props }: DrawerCloseProps) {
-  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
+  return <DrawerPrimitive.Close {...props} data-slot="drawer-close" />
 }
 
 export type DrawerOverlayProps = Omit<DrawerPrimitive.Backdrop.Props, 'className'> & {
@@ -66,12 +66,12 @@ export type DrawerOverlayProps = Omit<DrawerPrimitive.Backdrop.Props, 'className
 export function DrawerOverlay({ className, ...props }: DrawerOverlayProps) {
   return (
     <DrawerPrimitive.Backdrop
+      {...props}
       data-slot="drawer-overlay"
       className={cn(
         'supports-backdrop-filter:backdrop-blur-sm bg-black/30 opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] select-none transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] inset-0 fixed z-50 min-h-dvh data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 data-[ending-style]:pointer-events-none data-[ending-style]:[transition-duration:calc(var(--drawer-swipe-strength)*400ms)] data-[snap-points]:[--drawer-overlay-min-opacity:0.5] data-[swiping]:[transition-duration:0ms] supports-[-webkit-touch-callout:none]:absolute',
         className,
       )}
-      {...props}
     />
   )
 }
@@ -93,6 +93,7 @@ export function DrawerContent({ className, children, ...props }: DrawerContentPr
         className="pointer-events-none select-none inset-0 fixed z-50 data-[modal=true]:pointer-events-auto"
       >
         <DrawerPrimitive.Popup
+          {...props}
           data-slot="drawer-popup"
           data-swipe-axis={swipeAxis}
           data-swipe-direction={swipeDirection}
@@ -124,7 +125,6 @@ export function DrawerContent({ className, children, ...props }: DrawerContentPr
             'data-[swipe-direction=right]:origin-right data-[swipe-direction=right]:[--closed-transform:translate3d(calc(100%+var(--drawer-inset,0px)+2px),0,0)_scale(var(--stack-scale))] data-[swipe-direction=right]:[--translate-x:calc(var(--drawer-swipe-movement-x)-var(--stack-peek-offset)-(var(--stack-shrink)*100%))] data-[swipe-direction=right]:right-0 md:data-[swipe-direction=right]:m-[12px] md:data-[swipe-direction=right]:rounded-[24px]',
             className,
           )}
-          {...props}
         >
           <DrawerPrimitive.Content
             data-slot="drawer-content"
@@ -145,12 +145,12 @@ export type DrawerHeaderProps = ComponentProps<'div'>
 export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
   return (
     <div
+      {...props}
       data-slot="drawer-header"
       className={cn(
         'p-4 pb-0 flex shrink-0 flex-col gap-0.5 group-data-[swipe-axis=y]/drawer-popup:text-center md:text-left md:gap-1.5',
         className,
       )}
-      {...props}
     />
   )
 }
@@ -158,7 +158,7 @@ export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
 export type DrawerFooterProps = ComponentProps<'div'>
 
 export function DrawerFooter({ className, ...props }: DrawerFooterProps) {
-  return <div data-slot="drawer-footer" className={className} {...props} />
+  return <div {...props} data-slot="drawer-footer" className={className} />
 }
 
 export type DrawerTitleProps = Omit<DrawerPrimitive.Title.Props, 'className'> & {
@@ -168,10 +168,10 @@ export type DrawerTitleProps = Omit<DrawerPrimitive.Title.Props, 'className'> & 
 export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
   return (
     <DrawerPrimitive.Title
+      {...props}
       data-slot="drawer-title"
       render={(props) => <Typography tag="h2" variant="title-md" {...props} />}
       className={className}
-      {...props}
     />
   )
 }
@@ -182,6 +182,6 @@ export type DrawerDescriptionProps = Omit<DrawerPrimitive.Description.Props, 'cl
 
 export function DrawerDescription({ className, ...props }: DrawerDescriptionProps) {
   return (
-    <DrawerPrimitive.Description data-slot="drawer-description" className={className} {...props} />
+    <DrawerPrimitive.Description {...props} data-slot="drawer-description" className={className} />
   )
 }

@@ -20,5 +20,5 @@ export function Typography<Tag extends TypographyTag = 'div'>({
 }: TypographyProps<Tag>) {
   const Component = tag ?? 'div'
 
-  return <Component className={cn(typographyVariants({ variant }), className)} {...props} />
+  return <Component {...props} className={cn(typographyVariants({ variant }), className)} />
 }
